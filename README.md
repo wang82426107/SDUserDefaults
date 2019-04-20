@@ -43,3 +43,8 @@
 ```
     [[SDUserDefaults standardUserDefaults] deleteUserInfo];
 ```
+
+<br>
+
+[点击查看博客](https://www.jianshu.com/p/7005244f83b1)
+
