@@ -44,7 +44,7 @@
     [[SDUserDefaults standardUserDefaults] deleteUserInfo];
 ```
 
-7.**更新数据**:想要删除的话,就把那个属性置为nil,想要修改某个属性就把那个属性修改,最后调用**saveUserInfoAction**方法保存即可即可.
+7.**更新数据**:想要删除的话,就把那个属性置为nil,想要修改某个属性就把那个属性修改,最后调用**saveUserInfoAction**方法保存即可.
 
 ```
     [SDUserDefaults standardUserDefaults].name = @"新的用户数据";
