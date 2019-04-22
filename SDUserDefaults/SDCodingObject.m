@@ -37,6 +37,7 @@
             
             BOOL isConforms = [typeClass conformsToProtocol:@protocol(NSCoding)];
             if (!isConforms) {
+                NSLog(@"未遵循NSCoding协议错误,请查看下面的错误日志👇👇👇");
                 NSString *exceptionContent = [NSString stringWithFormat:@"%@ 类中的 %@属性 未遵循NSCoding协议,请手动调整",NSStringFromClass([self class]),typeClassName];
                 @throw [NSException exceptionWithName:@"property has not NSCoding Protocol" reason:exceptionContent userInfo:nil];
             }
@@ -49,16 +50,26 @@
 
 - (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
     
-    unsigned int propertyCount = 0;
-    objc_property_t *propertyList = class_copyPropertyList([self class], &propertyCount);
-    for (int i = 0; i < propertyCount; i++) {
-        objc_property_t *thisProperty = &propertyList[i];
-        const char *name = property_getName(*thisProperty);
-        NSString *propertyName = [NSString stringWithFormat:@"%s",name];
-        id propertyValue = [self valueForKey:propertyName];
-        [aCoder encodeObject:propertyValue forKey:propertyName];
+    @try {
+        unsigned int propertyCount = 0;
+        objc_property_t *propertyList = class_copyPropertyList([self class], &propertyCount);
+        for (int i = 0; i < propertyCount; i++) {
+            objc_property_t *thisProperty = &propertyList[i];
+            const char *name = property_getName(*thisProperty);
+            NSString *propertyName = [NSString stringWithFormat:@"%s",name];
+            id propertyValue = [self valueForKey:propertyName];
+            [aCoder encodeObject:propertyValue forKey:propertyName];
+        }
+        free(propertyList);
+    } @catch (NSException *exception) {
+        if ([exception.name isEqualToString:@"NSInvalidArgumentException"]) {
+            NSLog(@"未遵循NSCoding协议错误,请查看下面的错误日志中的类名👇👇👇");
+            @throw exception;
+        } else {
+            NSLog(@"其他错误,请查看下面的错误日志👇👇👇");
+            @throw exception;
+        }
     }
-    free(propertyList);
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
