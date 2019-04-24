@@ -33,13 +33,26 @@ static SDUserDefaults *userDefaults = nil;
     if (userInfoData == nil) {
         return [[SDUserDefaults alloc] init];
     } else {
-        return [NSKeyedUnarchiver unarchiveObjectWithData:userInfoData];
+        SDUserDefaults * userInitDefaults = nil;
+        @try {
+            userInitDefaults = [NSKeyedUnarchiver unarchiveObjectWithData:userInfoData];
+        } @catch (NSException *exception) {
+            if ([exception.name isEqualToString:@"NSInvalidArgumentException"]) {
+                NSLog(@"未遵循NSCoding协议错误,请查看下面的错误日志中的类名👇👇👇");
+                @throw exception;
+            } else {
+                NSLog(@"其他错误,请查看下面的错误日志👇👇👇");
+                @throw exception;
+            }
+        }
+        return userInitDefaults;
     }
 }
 
 - (void)saveUserInfoAction {
     
-    NSData *userInfoData = [NSKeyedArchiver archivedDataWithRootObject:self];
+    NSLog(@"打印数据:%@",_name);
+    NSData *userInfoData = [NSKeyedArchiver archivedDataWithRootObject:userDefaults];
     [[NSUserDefaults standardUserDefaults] setObject:userInfoData forKey:SD_USER_MANAGER];
 }
 
@@ -65,9 +78,10 @@ static SDUserDefaults *userDefaults = nil;
 
 - (void)setValue:(id)value forKey:(NSString *)key {
     
+    NSLog(@"打印Key:%@",key);
     [super setValue:value forKey:key];
-    
 }
+
 
 @end
 
