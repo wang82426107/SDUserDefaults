@@ -29,6 +29,11 @@
     testModel.age = @(15);
     testModel.location = @"北京";
     [SDUserDefaults standardUserDefaults].testModel = testModel;
+    
+    //不需要归档持久化的数据,只用于本次声明周期中.会有检测过程
+//    [SDUserDefaults standardUserDefaults].testModel.unEncodePropertys = @[@"age",@"names"];
+    
+    
     [[SDUserDefaults standardUserDefaults] saveUserInfoAction];
 }
 

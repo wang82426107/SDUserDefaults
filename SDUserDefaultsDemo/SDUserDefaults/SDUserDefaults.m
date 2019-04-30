@@ -51,7 +51,6 @@ static SDUserDefaults *userDefaults = nil;
 
 - (void)saveUserInfoAction {
     
-    NSLog(@"打印数据:%@",_name);
     NSData *userInfoData = [NSKeyedArchiver archivedDataWithRootObject:userDefaults];
     [[NSUserDefaults standardUserDefaults] setObject:userInfoData forKey:SD_USER_MANAGER];
 }
@@ -78,7 +77,6 @@ static SDUserDefaults *userDefaults = nil;
 
 - (void)setValue:(id)value forKey:(NSString *)key {
     
-    NSLog(@"打印Key:%@",key);
     [super setValue:value forKey:key];
 }
 

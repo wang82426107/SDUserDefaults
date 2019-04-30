@@ -46,6 +46,29 @@
     free(propertyList);
 }
 
+//检测用户写的忽略数组是否含有位置属性名,例如@"name" 写成 @"names" 等,默认会有提示.
+- (void)setUnEncodePropertys:(NSArray<NSString *> *)unEncodePropertys {
+    
+    _unEncodePropertys = unEncodePropertys;
+    if (!_closeAlertLog) {
+        unsigned int propertyCount = 0;
+        objc_property_t *propertyList = class_copyPropertyList([self class], &propertyCount);
+        NSMutableArray *propertyNames = [NSMutableArray arrayWithCapacity:16];
+        for (int i = 0; i < propertyCount; i++) {
+            objc_property_t *thisProperty = &propertyList[i];
+            const char *name = property_getName(*thisProperty);
+            NSString *propertyName = [NSString stringWithFormat:@"%s",name];
+            [propertyNames addObject:propertyName];
+        }
+        for (int i = 0; i < _unEncodePropertys.count; i++) {
+            if (![propertyNames containsObject:_unEncodePropertys[i]]) {
+                NSLog(@"%@ 类中未含有需要忽略归档的属性 %@ ,请检查",NSStringFromClass([self class]),_unEncodePropertys[i]);
+            }
+        }
+        free(propertyList);
+    }
+}
+
 #pragma mark - 归档与解档
 
 - (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
@@ -57,6 +80,9 @@
             objc_property_t *thisProperty = &propertyList[i];
             const char *name = property_getName(*thisProperty);
             NSString *propertyName = [NSString stringWithFormat:@"%s",name];
+            if (_unEncodePropertys != nil && [_unEncodePropertys containsObject:propertyName]) {
+                continue;
+            }
             id propertyValue = [self valueForKey:propertyName];
             [aCoder encodeObject:propertyValue forKey:propertyName];
         }
