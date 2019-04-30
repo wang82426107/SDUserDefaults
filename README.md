@@ -59,6 +59,22 @@
     [[SDUserDefaults standardUserDefaults] saveUserInfoAction]; // 更新数据
 ```
 
+8.**忽略归档属性**:不想让部分属性进行归档持久化怎么办?使用 **unEncodePropertys** 即可.添加忽略的属性名称则该属性不会进行归档操作,注意,要忽略尽量在
+**saveUserInfoAction**前使用吆~
+
+```
+    [SDUserDefaults standardUserDefaults].testModel.unEncodePropertys = @[@"age",@"names"];
+```
+
+<br>
+####历史版本
+
+* 1.0.0 SDUserDefaults初次创建
+
+* 1.0.1 SDUserDefaults对数组中的元素是否遵循NSCoding协议进行的提示完善
+
+* 1.0.2 添加忽略归档数组unEncodePropertys,可忽略部分属性进行归档操作.
+
 <br>
 
 SDUserDefaults交流反馈QQ群: 214575341
