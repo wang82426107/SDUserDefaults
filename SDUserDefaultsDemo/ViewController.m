@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SDUserDefaults.h"
+#import "TestUserDefaults.h"
 
 @interface ViewController ()
 
@@ -17,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
 }
 
 - (IBAction)addUserInfoAction:(id)sender {
@@ -33,8 +33,21 @@
     //不需要归档持久化的数据,只用于本次声明周期中.会有检测过程
 //    [SDUserDefaults standardUserDefaults].testModel.unEncodePropertys = @[@"age",@"names"];
     
-    
     [[SDUserDefaults standardUserDefaults] saveUserInfoAction];
+    
+    /*****赋值并且保存数据*****/
+    [TestUserDefaults standardUserDefaults].name = @"测试数据";
+    TextModel *test = [[TextModel alloc] init];
+    test.name = @"测试骚栋";
+    test.age = @(18);
+    test.location = @"测试北京";
+    [TestUserDefaults standardUserDefaults].testModel = test;
+    
+    //不需要归档持久化的数据,只用于本次声明周期中.会有检测过程
+    //    [SDUserDefaults standardUserDefaults].testModel.unEncodePropertys = @[@"age",@"names"];
+    
+    [[TestUserDefaults standardUserDefaults] saveAllPropertyAction];
+    
 }
 
 - (IBAction)showUserInfoAction:(id)sender {
@@ -44,12 +57,21 @@
     NSLog(@"%@",[SDUserDefaults standardUserDefaults].testModel.name);
     NSLog(@"%@",[SDUserDefaults standardUserDefaults].testModel.age);
     NSLog(@"%@",[SDUserDefaults standardUserDefaults].testModel.location);
+    
+    
+    NSLog(@"%@",[TestUserDefaults standardUserDefaults].name);
+    NSLog(@"%@",[TestUserDefaults standardUserDefaults].testModel.name);
+    NSLog(@"%@",[TestUserDefaults standardUserDefaults].testModel.age);
+    NSLog(@"%@",[TestUserDefaults standardUserDefaults].testModel.location);
+    
 }
 
 - (IBAction)deleteUserInfoAction:(id)sender {
     
     /*****删除数据*****/
     [[SDUserDefaults standardUserDefaults] deleteUserInfo];
+    
+    [[TestUserDefaults standardUserDefaults] deleteAllPropertyAction];
 }
 
 

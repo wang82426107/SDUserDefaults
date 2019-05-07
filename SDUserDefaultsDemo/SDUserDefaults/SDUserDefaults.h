@@ -5,6 +5,7 @@
 //  Created by bnqc on 2019/4/19.
 //  Copyright © 2019年 Dong. All rights reserved.
 //
+// 详情博客: https://www.jianshu.com/p/7005244f83b1
 
 #import "SDCodingObject.h"
 #import "TextModel.h"
