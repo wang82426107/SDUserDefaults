@@ -8,7 +8,6 @@
 
 #import "SDCodingObject.h"
 #import <objc/runtime.h>
-#import "TextModel.h"
 
 @implementation SDCodingObject
 
