@@ -95,7 +95,7 @@
 
 * 为什么会有SDUserObject类的出现? 
 
-答:后期的SDUserDefaults会使用cocospod进行管理,那么到时候如果通过cocospod引入的时候不能去改动源码吧,所以我们通过继承于SDUserObject的方式来使用SDUserDefaults这个三方,同时呢,现在手动导入的方式,也会有很多童鞋有这样的自定义类的需求,所以SDUserObject的出现是很有必要的~
+答:后期的SDUserDefaults会使用cocoapods进行管理,那么到时候如果通过cocoapods引入的时候不能去改动源码吧,所以我们通过继承于SDUserObject的方式来使用SDUserDefaults这个三方,同时呢,现在手动导入的方式,也会有很多童鞋有这样的自定义类的需求,所以SDUserObject的出现是很有必要的~
 
 * 为什么在初始化SDUserObject类或者子类的时候需要使用**- (instancetype)initWithIdentifier**这个带有标识符的初始化方法呢?
 
