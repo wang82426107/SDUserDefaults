@@ -68,6 +68,44 @@
 
 <br>
 
+#### SDUserDefaults 自定义使用
+
+***
+
+有很多的童鞋会说,我凭啥要用你的SDUserDefaults来初始化啊,我就想自己写一个UserDefaults单例来管理我自己的存储属性不行啊?
+
+行,当然可以了,在1.0.3版本的时候,骚栋增加了一个新的类,叫做SDUserObject类,只需要你写的单例继承于这个类,并且使用 **- (instancetype)initWithIdentifier** 方法来初始化,那么依然可以使用强大的属性,但是自己书写的代码量会大大减少.我们来看一下Demo中的例子是如何使用的吧.
+
+基本操作什么的,还是如同上一个模块一样.我们来看一下存储的单例类是定义的.我们需要让单例类继承于**SDUserObject**类,如下图所示.
+
+![](https://upload-images.jianshu.io/upload_images/1396375-a71856bfbdf346c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+然后在创建单例的时候需要使用带有标识符参数的 **- (instancetype)initWithIdentifier** 方法进行初始化.如下图所示.
+
+![](https://upload-images.jianshu.io/upload_images/1396375-b12a83d3e91037af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+然后在保存和删除的方法上使用**saveAllPropertyAction** 和 **deleteAllPropertyAction** 即可.
+
+![](https://upload-images.jianshu.io/upload_images/1396375-6f81b7850d7c2f44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+<br>
+
+这里对几个问题做一下解释.
+
+* 为什么会有SDUserObject类的出现? 
+
+答:后期的SDUserDefaults会使用cocospod进行管理,那么到时候如果通过cocospod引入的时候不能去改动源码吧,所以我们通过继承于SDUserObject的方式来使用SDUserDefaults这个三方,同时呢,现在手动导入的方式,也会有很多童鞋有这样的自定义类的需求,所以SDUserObject的出现是很有必要的~
+
+* 为什么在初始化SDUserObject类或者子类的时候需要使用**- (instancetype)initWithIdentifier**这个带有标识符的初始化方法呢?
+
+答:唯一标识符identifier的作用是做了存储的key来使用的.如果有的童鞋写了两个单例类,但是用了相同的identifier就会出现数据错乱问题,所以这里我把这个唯一标识符暴露在.h属性中,用于个别童鞋进行单独的定制.只要保证全局唯一即可.
+
+
+
+
+<br>
+
 #### 历史版本
 
 * 1.0.0 SDUserDefaults初次创建
