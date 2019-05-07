@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TestErrorModel : NSObject
 
+//TestErrorModel 未实现NSCoding协议,用于测试
+
 @end
 
 NS_ASSUME_NONNULL_END

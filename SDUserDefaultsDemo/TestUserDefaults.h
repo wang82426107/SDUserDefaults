@@ -11,7 +11,7 @@
 #import "TextModel.h"
 @interface TestUserDefaults : SDUserObject
 
-// TestUserDefaults 
+// TestUserDefaults 是自定义的单例类,继承于SDUserObject
 
 + (instancetype)standardUserDefaults;
 
