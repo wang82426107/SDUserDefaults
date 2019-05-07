@@ -76,6 +76,8 @@
 
 * 1.0.2 添加忽略归档数组unEncodePropertys,可忽略部分属性进行归档操作.
 
+* 1.0.3 新增SDUserObject类,用于自定义单例类使用.
+
 <br>
 
 SDUserDefaults交流反馈QQ群: 214575341
