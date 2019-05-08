@@ -115,6 +115,24 @@ cocoapod导入方式如下所示,使用方法可看 **自定义使用** 模块.
 答:唯一标识符identifier的作用是做了存储的key来使用的.如果有的童鞋写了两个单例类,但是用了相同的identifier就会出现数据错乱问题,所以这里我把这个唯一标识符暴露在.h属性中,用于个别童鞋进行单独的定制.只要保证全局唯一即可.
 
 
+<br>
+
+#### SDUserDefaults 的Keychain存储
+
+***
+
+SDUserDefaults 的1.0.0版本是基于NSUserDefaults进行存储的,由于NSUserDefaults是使用的明文plist文件进行存储,所以安全性有一定的欠缺,那么有的童鞋想来个更加安全的存储,是否可以呢?当然了,在1.0.6版本,骚栋对于Keychain存储方式已经做了添加,我们可以使用两种方式来实现Keychain存储方式.
+
+* 手动导入SDUserDefaults时,我们可以直接修改 **SDKeychainUserDefaults** 单例,使用方式和 **SDUserDefaults** 类一致即可.但是  **SDKeychainUserDefaults** 的存储位置是在Keychain,而不是NSUserDefaults中.
+
+![](https://upload-images.jianshu.io/upload_images/1396375-00b5ca718825fcc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+* cocoapods导入方式只需要使用 **initKeychainObjectWithIdentifier:** 即可. 如下所示. 可以查看Demo中的TestUserDefaults的初始化方法.
+
+![](https://upload-images.jianshu.io/upload_images/1396375-276484c0049f98e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
 
 
 <br>
@@ -128,6 +146,11 @@ cocoapod导入方式如下所示,使用方法可看 **自定义使用** 模块.
 * 1.0.2 添加忽略归档数组unEncodePropertys,可忽略部分属性进行归档操作.
 
 * 1.0.3 新增SDUserObject类,用于自定义单例类使用.
+
+* 1.0.5 添加SDUserObject,添加cocoapods导入方式.
+
+* 1.0.6 添加keychain存储方式,安全性更高!
+
 
 <br>
 
