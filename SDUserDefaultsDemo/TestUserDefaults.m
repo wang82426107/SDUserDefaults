@@ -8,7 +8,10 @@
 
 #import "TestUserDefaults.h"
 
-#define TEST_USER_MANAGER @"com.bnqc.SDUserDefaultsDemo"
+#define TEST_USER_MANAGER @"TEST_USER_MANAGER"
+
+#define TEST_KEY_CHAIN_USER_MANAGER @"TEST_KEY_CHAIN_USER_MANAGER"
+
 
 @implementation TestUserDefaults
 
@@ -19,7 +22,12 @@ static TestUserDefaults *testDefaults = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (testDefaults == nil) {
-            testDefaults = [[TestUserDefaults alloc] initKeychainObjectWithIdentifier:TEST_USER_MANAGER];
+            //存放于keychain中的用户数据
+            testDefaults = [[TestUserDefaults alloc] initKeychainObjectWithIdentifier:TEST_KEY_CHAIN_USER_MANAGER];
+            
+            //存放于NSUserDefaults中的用户数据
+//            testDefaults = [[TestUserDefaults alloc] initWithIdentifier:TEST_USER_MANAGER];
+
         }
     });
     return testDefaults;
