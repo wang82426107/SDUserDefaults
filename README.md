@@ -11,6 +11,7 @@ cocoapod导入方式如下所示,使用方法可看 **自定义使用** 模块.
 ```
    pod 'SDUserDefaults'
 ```
+然后 `pod install`
 
 
 <br>
