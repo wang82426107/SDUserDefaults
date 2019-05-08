@@ -1,25 +1,25 @@
 //
-//  SDUserDefaults.m
-//  staveDemo
+//  SDKeychainUserDefaults.m
+//  SDUserDefaultsDemo
 //
-//  Created by bnqc on 2019/4/19.
+//  Created by bnqc on 2019/5/8.
 //  Copyright © 2019年 Dong. All rights reserved.
 //
 
-#import "SDUserDefaults.h"
+#import "SDKeychainUserDefaults.h"
 
-#define SD_USER_MANAGER @"SD_USER_MANAGER"
+#define SD_KEY_CHAIN_USER_MANAGER @"SD_KEY_CHAIN_USER_MANAGER"
 
-@implementation SDUserDefaults
+@implementation SDKeychainUserDefaults
 
-static SDUserDefaults *userDefaults = nil;
+static SDKeychainUserDefaults *userDefaults = nil;
 
 + (instancetype)standardUserDefaults {
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (userDefaults == nil) {
-            userDefaults = [[SDUserDefaults alloc] initWithIdentifier:SD_USER_MANAGER];
+            userDefaults = [[SDKeychainUserDefaults alloc] initKeychainObjectWithIdentifier:SD_KEY_CHAIN_USER_MANAGER];
         }
     });
     return userDefaults;
@@ -38,4 +38,3 @@ static SDUserDefaults *userDefaults = nil;
 
 
 @end
-
