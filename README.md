@@ -2,13 +2,21 @@
 > ##### 所有属性必须遵循NSCoding协议!!!! 包括数组成员变量以及字典成员变量中的元素!!!! 
 > ##### 所有属性必须遵循NSCoding协议!!!! 包括数组成员变量以及字典成员变量中的元素!!!! 
 
+#### 导入方式
+
+手动导入: 下载演示Demo以及 **SDUserDefaults**. 把SDUserDefaults文件夹导入你自己的项目合适位置. 使用方法可以看 **自定义使用** 和 **基本使用方式**
+
+cocoapod导入方式如下所示,使用方法可看 **自定义使用** 模块.
+
+```
+   pod 'SDUserDefaults'
+```
 
 
+#### 基本使用方式 (导入方式推荐:手动导入)
 
-#### 使用方式
 
-
-1.下载演示Demo以及**SDUserDefaults**.
+1.下载演示Demo以及 **SDUserDefaults**.
 
 2.把SDUserDefaults文件夹导入你自己的项目合适位置,文件夹中主要包含**SDUserDefaults**和**SDCodingObject**两个类.
 
@@ -68,7 +76,7 @@
 
 <br>
 
-#### SDUserDefaults 自定义使用
+#### SDUserDefaults 自定义使用 (导入方式推荐:手动导入和cocoapods都可)
 
 ***
 
@@ -97,7 +105,7 @@
 
 答:后期的SDUserDefaults会使用cocoapods进行管理,那么到时候如果通过cocoapods引入的时候不能去改动源码吧,所以我们通过继承于SDUserObject的方式来使用SDUserDefaults这个三方,同时呢,现在手动导入的方式,也会有很多童鞋有这样的自定义类的需求,所以SDUserObject的出现是很有必要的~
 
-* 为什么在初始化SDUserObject类或者子类的时候需要使用**- (instancetype)initWithIdentifier**这个带有标识符的初始化方法呢?
+* 为什么在初始化SDUserObject类或者子类的时候需要使用 **- (instancetype)initWithIdentifier** 这个带有标识符的初始化方法呢?
 
 答:唯一标识符identifier的作用是做了存储的key来使用的.如果有的童鞋写了两个单例类,但是用了相同的identifier就会出现数据错乱问题,所以这里我把这个唯一标识符暴露在.h属性中,用于个别童鞋进行单独的定制.只要保证全局唯一即可.
 
