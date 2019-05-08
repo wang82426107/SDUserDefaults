@@ -1,17 +1,18 @@
 //
-//  SDUserDefaults.h
-//  staveDemo
+//  SDKeychainUserDefaults.h
+//  SDUserDefaultsDemo
 //
-//  Created by bnqc on 2019/4/19.
+//  Created by bnqc on 2019/5/8.
 //  Copyright © 2019年 Dong. All rights reserved.
 //
 // 详情博客: https://www.jianshu.com/p/7005244f83b1
 
+
 #import "SDUserObject.h"
 
-@interface SDUserDefaults : SDUserObject
+@interface SDKeychainUserDefaults : SDUserObject
 
-// SDUserDefaults 是用户偏好设置存储单例对象.
+//SDKeychainUserDefaults 是存储于Keychain中的单例对象.在安全性相比于SDUserDefaults更高,但是在越狱手机上仍然存在风险.
 
 + (instancetype)standardUserDefaults;
 

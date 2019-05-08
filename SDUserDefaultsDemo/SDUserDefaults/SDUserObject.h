@@ -17,10 +17,16 @@
 @property( nonatomic,copy,readonly)NSString *identifier;
 
 /**
- 创建一个具有标识符的对象.标识符的作用:归档存储和解档取值的唯一标识.
- @param identifier 唯一标识符
+ 在NSUserDefaults创建一个具有标识符的对象.
+ @param identifier 唯一标识符,作为归档存储和解档取值的唯一标识.
  */
 - (instancetype)initWithIdentifier:(NSString *)identifier;
+
+/**
+ 在Keychain创建一个具有标识符的对象.
+ @param identifier 唯一标识符,作为归档存储和解档取值的唯一标识.
+ */
+- (instancetype)initKeychainObjectWithIdentifier:(NSString *)identifier;
 
 /**
  存储所有的对象属性

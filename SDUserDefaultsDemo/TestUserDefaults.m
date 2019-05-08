@@ -8,7 +8,7 @@
 
 #import "TestUserDefaults.h"
 
-#define TEST_USER_MANAGER @"TEST_USER_MANAGER"
+#define TEST_USER_MANAGER @"com.bnqc.SDUserDefaultsDemo"
 
 @implementation TestUserDefaults
 
@@ -19,7 +19,7 @@ static TestUserDefaults *testDefaults = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (testDefaults == nil) {
-            testDefaults = [[TestUserDefaults alloc] initWithIdentifier:TEST_USER_MANAGER];
+            testDefaults = [[TestUserDefaults alloc] initKeychainObjectWithIdentifier:TEST_USER_MANAGER];
         }
     });
     return testDefaults;

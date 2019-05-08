@@ -7,24 +7,14 @@
 //
 // 详情博客: https://www.jianshu.com/p/7005244f83b1
 
-#import "SDCodingObject.h"
+#import "SDUserObject.h"
 #import "TextModel.h"
 
-@interface SDUserDefaults : SDCodingObject
+@interface SDUserDefaults : SDUserObject
 
 // SDUserDefaults 是用户偏好设置存储单例对象.
 
 + (instancetype)standardUserDefaults;
-
-/**
- 存储用户偏好设置
- */
-- (void)saveUserInfoAction;
-
-/**
- 删除用户偏好设置
- */
-- (void)deleteUserInfo;
 
 // 请在下方添加你所需要保存的属性,注意要遵循NSCoding协议,或者继承于SDCodingObject类 ❗️❗️❗️❗️❗️暂不支持int,float,BOOL等类型❗️❗️❗️❗️❗️
 

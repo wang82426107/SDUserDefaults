@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1236FE42282E180006542A0 /* SDKeychainUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = E1236FE32282E180006542A0 /* SDKeychainUserDefaults.m */; };
 		E12B403D2281132300C60F96 /* SDUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E12B403C2281132300C60F96 /* SDUserObject.m */; };
 		E12B404022811B1F00C60F96 /* TestUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = E12B403F22811B1F00C60F96 /* TestUserDefaults.m */; };
 		E12B404322811CD100C60F96 /* TestErrorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E12B404222811CD100C60F96 /* TestErrorModel.m */; };
+		E13DA9282282DAD200B6672E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13DA9272282DAD200B6672E /* Security.framework */; };
 		E175C3B72269B8A900DA2D13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E175C3B62269B8A900DA2D13 /* AppDelegate.m */; };
 		E175C3BA2269B8A900DA2D13 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E175C3B92269B8A900DA2D13 /* ViewController.m */; };
 		E175C3BD2269B8A900DA2D13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E175C3BB2269B8A900DA2D13 /* Main.storyboard */; };
@@ -22,12 +24,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E1236FE22282E180006542A0 /* SDKeychainUserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDKeychainUserDefaults.h; sourceTree = "<group>"; };
+		E1236FE32282E180006542A0 /* SDKeychainUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDKeychainUserDefaults.m; sourceTree = "<group>"; };
 		E12B403B2281132300C60F96 /* SDUserObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDUserObject.h; sourceTree = "<group>"; };
 		E12B403C2281132300C60F96 /* SDUserObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDUserObject.m; sourceTree = "<group>"; };
 		E12B403E22811B1F00C60F96 /* TestUserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUserDefaults.h; sourceTree = "<group>"; };
 		E12B403F22811B1F00C60F96 /* TestUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUserDefaults.m; sourceTree = "<group>"; };
 		E12B404122811CD100C60F96 /* TestErrorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestErrorModel.h; sourceTree = "<group>"; };
 		E12B404222811CD100C60F96 /* TestErrorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestErrorModel.m; sourceTree = "<group>"; };
+		E13DA9252282DA5800B6672E /* SDUserDefaultsDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SDUserDefaultsDemo.entitlements; sourceTree = "<group>"; };
+		E13DA9272282DAD200B6672E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E175C3B22269B8A900DA2D13 /* SDUserDefaultsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDUserDefaultsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E175C3B52269B8A900DA2D13 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E175C3B62269B8A900DA2D13 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,17 +57,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13DA9282282DAD200B6672E /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E13DA9262282DAD200B6672E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E13DA9272282DAD200B6672E /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E175C3A92269B8A900DA2D13 = {
 			isa = PBXGroup;
 			children = (
 				E175C3B42269B8A900DA2D13 /* SDUserDefaultsDemo */,
 				E175C3B32269B8A900DA2D13 /* Products */,
+				E13DA9262282DAD200B6672E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +92,7 @@
 		E175C3B42269B8A900DA2D13 /* SDUserDefaultsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				E13DA9252282DA5800B6672E /* SDUserDefaultsDemo.entitlements */,
 				E175C3CC2269B9B900DA2D13 /* SDUserDefaults */,
 				E175C3B52269B8A900DA2D13 /* AppDelegate.h */,
 				E175C3B62269B8A900DA2D13 /* AppDelegate.m */,
@@ -105,6 +122,8 @@
 				E12B403C2281132300C60F96 /* SDUserObject.m */,
 				E175C3CF2269B9B900DA2D13 /* SDUserDefaults.h */,
 				E175C3D02269B9B900DA2D13 /* SDUserDefaults.m */,
+				E1236FE22282E180006542A0 /* SDKeychainUserDefaults.h */,
+				E1236FE32282E180006542A0 /* SDKeychainUserDefaults.m */,
 			);
 			path = SDUserDefaults;
 			sourceTree = "<group>";
@@ -140,6 +159,11 @@
 				TargetAttributes = {
 					E175C3B12269B8A900DA2D13 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -182,6 +206,7 @@
 				E175C3BA2269B8A900DA2D13 /* ViewController.m in Sources */,
 				E175C3D22269B9B900DA2D13 /* SDUserDefaults.m in Sources */,
 				E175C3D12269B9B900DA2D13 /* SDCodingObject.m in Sources */,
+				E1236FE42282E180006542A0 /* SDKeychainUserDefaults.m in Sources */,
 				E12B403D2281132300C60F96 /* SDUserObject.m in Sources */,
 				E12B404022811B1F00C60F96 /* TestUserDefaults.m in Sources */,
 				E175C3C52269B8AC00DA2D13 /* main.m in Sources */,
@@ -332,7 +357,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76HE6TP5SH;
 				INFOPLIST_FILE = SDUserDefaultsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -350,7 +375,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76HE6TP5SH;
 				INFOPLIST_FILE = SDUserDefaultsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
