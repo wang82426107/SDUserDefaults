@@ -2,6 +2,8 @@
 > ##### 所有属性必须遵循NSCoding协议!!!! 包括数组成员变量以及字典成员变量中的元素!!!! 
 > ##### 所有属性必须遵循NSCoding协议!!!! 包括数组成员变量以及字典成员变量中的元素!!!! 
 
+<br>
+
 #### 导入方式
 
 手动导入: 下载演示Demo以及 **SDUserDefaults**. 把SDUserDefaults文件夹导入你自己的项目合适位置. 使用方法可以看 **自定义使用** 和 **基本使用方式**
@@ -11,6 +13,9 @@ cocoapod导入方式如下所示,使用方法可看 **自定义使用** 模块.
 ```
    pod 'SDUserDefaults'
 ```
+
+
+<br>
 
 
 #### 基本使用方式 (导入方式推荐:手动导入)
@@ -73,6 +78,7 @@ cocoapod导入方式如下所示,使用方法可看 **自定义使用** 模块.
 ```
     [SDUserDefaults standardUserDefaults].testModel.unEncodePropertys = @[@"age",@"names"];
 ```
+
 
 <br>
 
