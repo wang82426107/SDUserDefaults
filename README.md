@@ -4,7 +4,7 @@
 
 <br>
 
-#### Import the way
+#### Import mode
 
 ***
 
@@ -44,7 +44,7 @@ testModel.name = @"骚栋";
 testModel.age = @(15);
 testModel.location = @"北京";
 [SDUserDefaults standardUserDefaults].testModel = testModel;
-[[SDUserDefaults standardUserDefaults] saveUserInfoAction]; // 存储数据
+[[SDUserDefaults standardUserDefaults] saveAllPropertyAction]; // 存储数据
 ```
 
 4.**Get Data**:The code is shown below.
@@ -63,7 +63,7 @@ NSLog(@"%@",[SDUserDefaults standardUserDefaults].testModel.location);
 [[SDUserDefaults standardUserDefaults] deleteAllPropertyAction];
 ```
 
-6.**Update Data**:If you want to delete a property, set that property to nil; If you want to modify a property, modify that property and save it by calling **saveUserInfoAction**.
+6.**Update Data**:If you want to delete a property, set that property to nil; If you want to modify a property, modify that property and save it by calling **saveAllPropertyAction**.
 
 ```
 [SDUserDefaults standardUserDefaults].name = @"新的用户数据";
@@ -71,8 +71,7 @@ NSLog(@"%@",[SDUserDefaults standardUserDefaults].testModel.location);
 [[SDUserDefaults standardUserDefaults] saveAllPropertyAction]; // 更新数据
 ```
 
-7.**Ignore Archive Attributes**:What if you don't want some properties to be archived for persistence? in
-**saveUserInfoAction** before use use **unEncodePropertys**.The code is shown below.
+7.**Ignore Archive Attributes**:What if you don't want some properties to be archived and persisted? Use unEncodePropertys. If you add an ignored attribute name, the attribute will not be archived. Note that you should ignore before using **saveAllPropertyAction** as far as possible.
 
 ```
 [SDUserDefaults standardUserDefaults].testModel.unEncodePropertys = @[@"age",@"names"];
@@ -84,9 +83,9 @@ NSLog(@"%@",[SDUserDefaults standardUserDefaults].testModel.location);
 #### Custom usage (import mode recommended: manual import and cocoapods are also available)
 ***
 
-A lot of developers are going to say, why should I use your SDUserDefaults to initialize, I want to write my own UserDefaults singleton to manage my own storage properties no?
+A lot of people would say, why should I initialize with your SDUserDefaults, I just want to write my own UserDefaults singleton to manage my own storage properties, can't I?
 
-Of course, when version 1.0.3, I added a class called SDUserObject, only need you write a singleton inherit from this class, and use **- (instancetype) initWithIdentifier** ways to initialize, still can use powerful property, but he could greatly reduce the amount of code written. Let's take a look at the Demo of the example is how to use it.
+OK, of course. In version 1.0.3, I added a new class called the SDUserObject class, which only needs the singleton you wrote to inherit from the class and initialize it with the -(instancetype) initWithIdentifier method. Then you can still use powerful properties, But the amount of code you write will be greatly reduced. Let's take a look at how the examples in Demo are used.
 
 We need the singleton class to inherit from the SDUserObject class, as shown in the figure below.
 
@@ -120,4 +119,6 @@ In version 1.0.6, I have added Keychain storage. We can implement Keychain stora
 <br>
 
 [SDUserDefaults Blog](https://www.jianshu.com/p/7005244f83b1)
+
+[修订者：贾璐]（）
 
